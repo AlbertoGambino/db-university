@@ -1,0 +1,126 @@
+Sulla base di quanto visto a lezione modellizzare la realta' di un'universita' definendo colonne con nome, tipo di dato e vincoli di integrita' per queste entita':
+
+- dipartimento
+
+    nome:  VARCHAR(128); NOT NULLABLE
+    direttore: VARCHAR(128); NOT NULLABLE
+    consiglioDipartimento: TEXT; NOT NULLABLE
+    giuntaDipartimento: TEXT; NOT NULLABLE
+    spese: TEXT; NOT NULLABLE
+    budget: INT; NOT NULLABLE
+    numeroCorsi: MEDIUMINT; NOT NULLABLE
+    numeroStudenti: INT; NOT NULLABLE
+    ricerca: TEXT; NOT NULLABLE
+    accreditamento: TEXT; NULLABLE
+    ubicazione: VARCHAR(128); NOT NULLABLE
+
+- corso di laurea
+
+    id: VARCHAR; NOT NULLABLE; UNIQUE
+    nome: VARCHAR(128); NOT NULLABLE
+    tipoLaurea: VARCHAR(128); NOT NULLABLE
+    programma: TEXT; NOT NULLABLE
+    materie: TEXT; NOT NULLABLE
+    frequenzaObbligatoria: VARCHAR(5); NULLABLE
+    crediti: MEDIUMINT; DEFAULT(0)
+    insegnanti: TEXT; NOT NULLABLE
+    assistenti: TEXT; NOT NULLABLE
+    nStudenti: MEDIUMINT; NOT NULLABLE
+    esami: TEXT; NOT NULLABLE
+    materialeCorsi: TEXT; NOT NULLABLE
+    strutture: TEXT; NOT NULLABLE
+    prezzo: INT; NOT NULLABLE
+    costi: INT; NOT NULLABLE
+    ricavi: INT; NOT NULLABLE
+    calendarioAppelli: TEXT; NOT NULLABLE
+
+- corso
+
+    id: VARCHAR; NOT NULLABLE; UNIQUE
+    descrizione: TEXT; NOT NULLABLE
+    durata: TEXT; NOT NULLABLE
+    argomenti: TEXT; NOT NULLABLE
+    frequenzaObbligatoria: VARCHAR(5); NOT NULLABLE
+    materialeCorsi: TEXT; NOT NULLABLE
+    numeroIscrizioni: MEDIUMINT; NOT NULLABLE
+    prezzo: VARCHAR; NOT NULLABLE;
+    costi: INT; NOT NULLABLE
+    ricavi: INT; NOT NULLABLE
+    insegnanti: TEXT; NOT NULLABLE
+    assistenti: TEXT; NOT NULLABLE
+    online: VARCHAR(5); NULLABLE
+
+- insegnante
+
+    nome: VARCHAR(128); NOT NULLABLE
+    cognome: VARCHAR(128); NOT NULLABLE
+    dataNascita: DATE ; NOT NULLABLE
+    LuogoNascita: VARCHAR(128); NOT NULLABLE
+    cittadinanza: VARCHAR(128); NOT NULLABLE
+    permessoDiSoggiorno: VARCHAR(128); NOT NULLABLE
+    sesso: VARCHAR(5); NULLABLE
+    docIdentità: VARCHAR(128); NOT NULLABLE
+    cf: VARCHAR(64), NOT NULLABLE; UNIQUE
+    titoloDiStudio: VARCHAR(128); NOT NULLABLE
+    Badge: VARCHAR(64), NOT NULLABLE; UNIQUE
+    id: VARCHAR(64), NOT NULLABLE; UNIQUE
+    password: VARCHAR(64), NOT NULLABLE;
+    Foto: VARCHAR; DEFAULT('foto_undefined.jpeg')
+    recapiti: TEXT; NOT NULLABLE
+    residenza: VARCHAR(128); NOT NULLABLE
+    tipoContratto: TEXT; NOT NULLABLE
+    dataInizioColl: DATE ; NOT NULLABLE
+    dataFineColl: DATE ; NOT NULLABLE
+    tacitoRinnovo: VARCHAR(5); NULLABLE
+    stipendio: INT; NOT NULLABLE
+    fringeBenefit: TEXT; NOT NULLABLE
+    corsiAttivi: TEXT; NOT NULLABLE
+    storico: TEXT; NOT NULLABLE
+
+- appello
+
+    id: VARCHAR(64), NOT NULLABLE; UNIQUE
+    data: DATE ; NOT NULLABLE
+    luogo: VARCHAR(128); NOT NULLABLE
+    durata: VARCHAR(128); NOT NULLABLE
+    voto: TINYINT; NOT NULLABLE
+    materia: VARCHAR(128); NOT NULLABLE
+    Iscrizioni: SMALLINT; NOT NULLABLE
+    docentePresente: VARCHAR(128); NOT NULLABLE
+    tipoProva: VARCHAR(128); NOT NULLABLE
+    orario: TIME; NOT NULLABLE
+    partizionamento: VARCHAR(128); NOT NULLABLE
+
+- studente
+
+    nome: VARCHAR(128); NOT NULLABLE
+    cognome: VARCHAR(128); NOT NULLABLE
+    dataNascita: DATE; NOT NULLABLE
+    LuogoNascita: VARCHAR(128); NOT NULLABLE
+    cittadinanza: VARCHAR(128); NOT NULLABLE
+    permessoDiSoggiorno: VARCHAR(128);  NULLABLE
+    sesso: VARCHAR(32), NULLABLE
+    docIdentità: VARCHAR(64), NOT NULLABLE;
+    cf: VARCHAR(64), NOT NULLABLE; UNIQUE
+    matricola: VARCHAR(64), NOT NULLABLE; UNIQUE
+    password: VARCHAR(64), NOT NULLABLE;
+    Foto: VARCHAR; DEFAULT('foto_undefined.jpeg')
+    recapiti: TEXT; NOT NULLABLE
+    residenza: TEXT; NOT NULLABLE
+    dataIscrizione: DATE; NOT NULLABLE
+    pagamenti: TEXT; NOT NULLABLE
+    scaduti: TEXT; NOT NULLABLE
+    tipoLaurea: VARCHAR(128); NOT NULLABLE
+    iscrizioniAttive: VARCHAR(128); NULLABLE
+
+
+- esito
+
+    dataSessione: DATE; NOT NULLABLE
+    descrizione: TEXT; NOT NULLABLE
+    materia: TEXT; NOT NULLABLE
+    matricolaStudente: VARCHAR(64), NOT NULLABLE; UNIQUE
+    giudizio: VARCHAR; NOT NULLABLE
+    media: TINYINT; NOT NULLABLE
+    pubblicazione: DATETIME; NOT NULLABLE
+    Idverbale: VARCHAR(64), NOT NULLABLE; UNIQUE
